@@ -37,7 +37,6 @@ const SignUp: React.FC = () => {
 
   return (
     <Container>
-      <Background />
       <Content>
         <img src={logoImg} alt="GoBarber" />
         <Form ref={formRef} onSubmit={handleSubmit}>
@@ -57,6 +56,7 @@ const SignUp: React.FC = () => {
           Voltar para logon
         </a>
       </Content>
+      <Background />
     </Container>
   );
 };
