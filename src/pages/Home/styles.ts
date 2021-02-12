@@ -4,8 +4,11 @@ import signUpBackgroundImage from '../../assets/sign-up-background.jpeg';
 
 export const Container = styled.div`
   height: 100vh;
-  display: flex;
   align-items: stretch;
+
+  @media (min-width: 700px) {
+    display: flex;
+  }
 `;
 
 export const Img = styled.img`

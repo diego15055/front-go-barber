@@ -9,11 +9,17 @@ import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../hooks/toast';
 
 import getValidationErrors from '../../utils/getValidationErrors';
-import logoImg from '../../assets/logo.svg';
+import logoImg from '../../assets/logo.png';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-import { Container, Content, AnimationContainer, Background } from './styles';
+import {
+  Container,
+  Content,
+  AnimationContainer,
+  Background,
+  Img,
+} from './styles';
 
 interface SigInFormData {
   email: string;
@@ -40,7 +46,7 @@ const SigIn: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
-        await sigIn({
+        sigIn({
           email: data.email,
           password: data.password,
         });
@@ -64,7 +70,7 @@ const SigIn: React.FC = () => {
     <Container>
       <Content>
         <AnimationContainer>
-          <img src={logoImg} alt="GoBarber" />
+          <Img src={logoImg} alt="GoBarber" />
           <Form ref={formRef} onSubmit={handleSubmit}>
             <h1>Faça seu logon</h1>
             <Input

@@ -1,11 +1,16 @@
 import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
-import signInBackgroundImage from '../../assets/sign-in-background.png';
+import signInBackgroundImage from '../../assets/sign-in-background.jpg';
 
 export const Container = styled.div`
   height: 100vh;
   display: flex;
   align-items: stretch;
+`;
+
+export const Img = styled.img`
+  width: 250px;
+  height: 90px;
 `;
 
 export const Content = styled.div`

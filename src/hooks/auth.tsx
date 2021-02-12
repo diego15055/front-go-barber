@@ -21,8 +21,8 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>(() => {
-    const token = localStorage.getItem('@GoBarber:token');
-    const user = localStorage.getItem('@GoBarber:user');
+    const token = localStorage.getItem('@CCnpj:token');
+    const user = localStorage.getItem('@CCnpj:user');
 
     if (token && user) {
       return { token, user: JSON.parse(user) };
@@ -31,21 +31,26 @@ const AuthProvider: React.FC = ({ children }) => {
     return {} as AuthState;
   });
   const sigIn = useCallback(async ({ email, password }) => {
-    const response = await api.post('sessions', {
+    const response = await api.post('login', {
       email,
       password,
     });
 
-    const { token, user } = response.data;
+    const user = {
+      email,
+    };
 
-    localStorage.setItem('@GoBarber:token', token);
-    localStorage.setItem('@GoBarber:user', JSON.stringify(user));
+    const token = response.data;
+    // const allHeaders = response.headers;
+
+    localStorage.setItem('@CCnpj:token', token);
+    localStorage.setItem('@CCnpj:user', JSON.stringify(email));
     setData({ token, user });
   }, []);
 
   const signOut = useCallback(() => {
-    localStorage.removeItem('@GoBarber:token');
-    localStorage.removeItem('@GoBarber:user');
+    localStorage.removeItem('@CCnpj:token');
+    localStorage.removeItem('@CCnpj:user');
 
     setData({} as AuthState);
   }, []);
